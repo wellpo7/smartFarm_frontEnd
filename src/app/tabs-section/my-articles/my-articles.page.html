@@ -1,9 +1,156 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>my-articles</ion-title>
+    <ion-title>Mes articles</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="side-menu"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="container">
+    <ion-searchbar placeholder="Rechercher" [debounce]="1000"></ion-searchbar>
 
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Tous les Articles</ion-card-subtitle>
+        <ion-card-title>Smart Farm</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button slot="end" color="secondary">
+          <ion-icon slot="end" name="add"></ion-icon>
+          Ajouter un article
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="main">
+      <!-- <div *ngIf=" 1 == 0; else list">
+        <p>Vous n'avez pas encore de fruit enregistré (° - °) !</p>
+      </div> -->
+      <!-- <ng-template #list> -->
+        <ion-card class="my" color="primary">
+          <div class="img">
+            <ion-thumbnail slot="start" class="img-skeleton">
+              <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+            </ion-thumbnail>
+          </div>
+          <div class="content">
+            <ion-card-header>
+              <ion-card-subtitle >
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 80%;"></ion-skeleton-text>
+              </ion-card-subtitle>
+              <ion-card-title>
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 100%;"></ion-skeleton-text>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 70%;"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 50%;"></ion-skeleton-text>
+              </p>
+            </ion-card-content>
+          </div>
+        </ion-card>
+        <ion-card class="my" color="primary">
+          <div class="img">
+            <ion-thumbnail slot="start" class="img-skeleton">
+              <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+            </ion-thumbnail>
+          </div>
+          <div class="content">
+            <ion-card-header>
+              <ion-card-subtitle >
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 80%;"></ion-skeleton-text>
+              </ion-card-subtitle>
+              <ion-card-title>
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 100%;"></ion-skeleton-text>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 70%;"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 50%;"></ion-skeleton-text>
+              </p>
+            </ion-card-content>
+          </div>
+        </ion-card>
+        <ion-card class="my" color="primary">
+          <div class="img">
+            <ion-thumbnail slot="start" class="img-skeleton">
+              <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+            </ion-thumbnail>
+          </div>
+          <div class="content">
+            <ion-card-header>
+              <ion-card-subtitle >
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 80%;"></ion-skeleton-text>
+              </ion-card-subtitle>
+              <ion-card-title>
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 100%;"></ion-skeleton-text>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 70%;"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 50%;"></ion-skeleton-text>
+              </p>
+            </ion-card-content>
+          </div>
+        </ion-card>
+        <ion-card class="my" color="primary">
+          <div class="img">
+            <ion-thumbnail slot="start" class="img-skeleton">
+              <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+            </ion-thumbnail>
+          </div>
+          <div class="content">
+            <ion-card-header>
+              <ion-card-subtitle >
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 80%;"></ion-skeleton-text>
+              </ion-card-subtitle>
+              <ion-card-title>
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 100%;"></ion-skeleton-text>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 70%;"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 50%;"></ion-skeleton-text>
+              </p>
+            </ion-card-content>
+          </div>
+        </ion-card>
+
+
+
+
+
+        <ion-card class="my" color="primary">
+          <div class="img">
+            <img src="../../../assets/icon/favicon.png" alt="Icon">
+          </div>
+          <div class="content">
+            <ion-card-header>
+              <ion-card-subtitle>Fruit</ion-card-subtitle>
+              <ion-card-title>Nom du fruit</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>Prix : XXX Fcfa</p>
+              <p>Quantité : XXX</p>
+            </ion-card-content>
+            <ion-button fill="clear" color="tertiary">Détail</ion-button>
+          </div>
+        </ion-card>
+      <!-- </ng-template> -->
+    </div>
+  </div>
 </ion-content>
