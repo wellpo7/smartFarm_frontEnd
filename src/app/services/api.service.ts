@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Fermier } from '../class/farmer';
+import { Fermier } from '../models/farmer';
 
 @Injectable({
   providedIn: 'root'
