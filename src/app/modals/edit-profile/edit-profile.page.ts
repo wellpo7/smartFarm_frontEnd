@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import * as L from 'leaflet';
 import { Observable, Subscriber } from 'rxjs';
-import { Fermier } from 'src/app/class/farmer';
+import { Fermier } from 'src/app/models/farmer';
 import { environment } from 'src/environments/environment';
 
 @Component({

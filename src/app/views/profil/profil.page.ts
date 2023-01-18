@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
-import { Fermier } from 'src/app/class/farmer';
+import { Fermier } from 'src/app/models/farmer';
 import { EditProfilePage } from 'src/app/modals/edit-profile/edit-profile.page';
 import { ApiService } from 'src/app/services/api.service';
 import * as L from 'leaflet';

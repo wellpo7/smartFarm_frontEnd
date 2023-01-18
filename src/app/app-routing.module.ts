@@ -29,10 +29,6 @@ const routes: Routes = [
   },
   {
     path: 'connexion',
-    loadChildren: () => import('./views/connexion/connexion.module').then(m => m.ConnexionPageModule)
-  },
-  {
-    path: 'fermier-login',
     loadChildren: () => import('./views/fermier-login/fermier-login.module').then(m => m.FermierLoginPageModule)
   },
   {
