@@ -12,22 +12,21 @@ export class FermierLoginPage implements OnInit {
 
   email!: string;
   password!: string;
-  idFarmer!: any;
+
 
   ngOnInit() {
   }
 
   login() {
     let loginInfos = {
-      // "email": "philbatou@gmail.com",
-      // "password": "hisoka44",
-      "email": this.email,
-      "password": this.password
+      "email": "philbatou@gmail.com",
+      "password": "hisoka44",
+      // "email": this.email,
+      // "password": this.password
     }
     console.log(loginInfos);
     this.farmerServ.login(loginInfos).subscribe((datas) => {
       console.log("idFarmer " + datas)
-      this.idFarmer = datas;
       localStorage.removeItem("idFarmer")
       localStorage.setItem("idFarmer", JSON.stringify(datas))
     })
