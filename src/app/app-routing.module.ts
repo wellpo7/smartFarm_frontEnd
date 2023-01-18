@@ -35,6 +35,27 @@ const routes: Routes = [
     path: 'fermier-login',
     loadChildren: () => import('./views/fermier-login/fermier-login.module').then(m => m.FermierLoginPageModule)
   },
+  {
+    path: 'edit-profile',
+    loadChildren: () => import('./modals/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },
+  {
+    path: 'commande',
+    loadChildren: () => import('./views/commande/commande.module').then( m => m.CommandePageModule)
+  },
+  {
+    path: 'commande-details',
+    loadChildren: () => import('./views/commande-details/commande-details.module').then( m => m.CommandeDetailsPageModule)
+  },
+  {
+    path: 'article-details',
+    loadChildren: () => import('./views/article-details/article-details.module').then( m => m.ArticleDetailsPageModule)
+  },
+  {
+    path: 'article-form',
+    loadChildren: () => import('./modals/article-form/article-form.module').then( m => m.ArticleFormPageModule)
+  },
+
 
 
 
