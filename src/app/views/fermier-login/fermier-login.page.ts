@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FarmerService } from 'src/app/services/farmer.service';
 
 @Component({
   selector: 'app-fermier-login',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FermierLoginPage implements OnInit {
 
-  constructor() { }
+  constructor(private farmerServ: FarmerService) { }
+
+  email!: string;
+  motDePasse!: string;
+  idFarmer!: any;
 
   ngOnInit() {
   }
+
+  login() {
+    let loginInfos = {
+      "email": this.email,
+      "motDePasse": this.motDePasse,
+    }
+    console.log(loginInfos);
+    this.farmerServ.login(loginInfos).subscribe((datas) => {
+      console.log("idFarmer" + datas)
+      this.idFarmer = datas;
+      localStorage.removeItem("idFarmer")
+      localStorage.setItem("idFarmer", JSON.stringify(datas))
+    })
+
+  };
+
 
 }
