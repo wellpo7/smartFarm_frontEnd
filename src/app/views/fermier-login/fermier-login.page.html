@@ -1,9 +1,20 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>fermier-login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div class="page-content ion-padding">
+    <div class="heading-login">Connexion</div>
+    <ion-item-group mode="ios">
+      <ion-item lines="none">
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="stacked">Mot de passe</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+    </ion-item-group>
+    <div class="ion-padding">
+      <ion-button size="large" mode="ios" (click)="login()" expand="block" color="success">
+        Connexion
+      </ion-button>
+    </div>
+  </div>
 </ion-content>
