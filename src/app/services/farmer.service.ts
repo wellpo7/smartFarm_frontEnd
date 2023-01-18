@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BASE_URL } from '../models/api';
 
 export interface Farmer {
@@ -13,7 +14,7 @@ export interface Farmer {
 
 export interface FarmerLogin {
   email: string,
-  motDePasse: string,
+  password: string,
 }
 
 @Injectable({
@@ -23,7 +24,7 @@ export class FarmerService {
 
   constructor(private http: HttpClient) { }
 
-  login(loginInfos: FarmerLogin) {
-    return this.http.post(BASE_URL + "singin", loginInfos)
+  login(loginInfos: FarmerLogin): Observable<any> {
+    return this.http.post(BASE_URL + "fermier/signin", loginInfos)
   }
 }

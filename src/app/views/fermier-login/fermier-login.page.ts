@@ -11,7 +11,7 @@ export class FermierLoginPage implements OnInit {
   constructor(private farmerServ: FarmerService) { }
 
   email!: string;
-  motDePasse!: string;
+  password!: string;
   idFarmer!: any;
 
   ngOnInit() {
@@ -19,12 +19,12 @@ export class FermierLoginPage implements OnInit {
 
   login() {
     let loginInfos = {
-      "email": this.email,
-      "motDePasse": this.motDePasse,
+      "email": "philbatou@gmail.com",
+      "password": "hisoka44",
     }
     console.log(loginInfos);
     this.farmerServ.login(loginInfos).subscribe((datas) => {
-      console.log("idFarmer" + datas)
+      console.log("idFarmer " + datas)
       this.idFarmer = datas;
       localStorage.removeItem("idFarmer")
       localStorage.setItem("idFarmer", JSON.stringify(datas))
