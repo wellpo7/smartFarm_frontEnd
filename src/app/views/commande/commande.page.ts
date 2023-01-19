@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService, DisplayCommande } from 'src/app/services/api.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class CommandePage implements OnInit {
   isLoaded: boolean = false;
 
   constructor(
-    private smartfarm: ApiService
+    private smartfarm: ApiService,
+    private router: Router
   ) { }
 
   async ngOnInit() {
@@ -24,7 +26,7 @@ export class CommandePage implements OnInit {
   }
 
   onClick(idCommande: string, prixTotal: number) {
-
+    this.router.navigate(['/commande-details', idCommande, 'total', prixTotal]);
   }
 
 }

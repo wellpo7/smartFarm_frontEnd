@@ -1,0 +1,50 @@
+@import "../../../theme/color.scss";
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    .header{
+        padding: 1rem;
+        background-color: var(--ion-color-primary);
+        border-bottom-left-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+        &-content{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            .img{
+                font-size: 5rem;
+                border-radius: 1rem;
+            }
+            h4{
+                ion-icon{
+                    margin: 0;
+                }
+            }
+        }
+    }
+    .content{
+        padding: 1rem 0;
+        ion-list{
+            ion-item{
+                margin: 1rem 0;
+                p{
+                    color: lighten($color: $text-color, $amount: 15%);
+                }
+            }
+        }
+        .map-container {
+            margin-top: 3rem;
+            height: 40vh;
+            width: 100%;
+            .map-frame {
+                height: 100%;
+                #map {
+                    height: 100%;
+                }
+            }
+        }
+          
+    }
+}
