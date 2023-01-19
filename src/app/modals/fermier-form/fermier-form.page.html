@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Mon profil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-text color="primary">
+      <h3>Enregistrer vos informations personnelles</h3>
+    </ion-text>
+    <ion-item fill="solid" class="input" lines="none">
+      <ion-label position="stacked">Nom complet</ion-label>
+      <ion-input type="text" [(ngModel)]="fermier.nom" class="custom"></ion-input>
+    </ion-item>
+    <ion-item fill="solid" class="input" lines="none">
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="fermier.email" class="custom"></ion-input>
+    </ion-item>
+    <ion-item fill="solid" class="input" lines="none">
+      <ion-label position="stacked">Mot de passe</ion-label>
+      <ion-input type="password" [(ngModel)]="fermier.motDePasse" class="custom"></ion-input>
+    </ion-item>
+    <ion-item fill="solid" class="input" lines="none">
+      <ion-label position="stacked">Telephone</ion-label>
+      <ion-input type="number" [(ngModel)]="fermier.telephone" class="custom"></ion-input>
+    </ion-item>
+    <ion-item fill="solid" class="input" lines="none">
+      <ion-label position="stacked">Pays</ion-label>
+      <ion-input type="text" [(ngModel)]="fermier.localisationDto.pays" class="custom"></ion-input>
+    </ion-item>
+    <ion-item fill="solid" class="input" lines="none">
+      <ion-label position="stacked">Region</ion-label>
+      <ion-input type="text" [(ngModel)]="fermier.localisationDto.region" class="custom"></ion-input>
+    </ion-item>
+    <ion-item fill="solid" class="input" lines="none">
+      <ion-label position="stacked">Ville</ion-label>
+      <ion-input type="text" [(ngModel)]="fermier.localisationDto.ville" class="custom"></ion-input>
+    </ion-item>
+    <div class="map-container">
+      <div class="map-frame">
+        <div id="map2"></div>
+      </div>
+    </div>
+  </div>
+</ion-content>

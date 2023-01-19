@@ -14,7 +14,7 @@ export interface Localisation {
 }
 
 export interface Farmer {
-  id: number,
+  id: string,
   nom: string,
   email: string,
   motDePasse: string,
@@ -146,5 +146,9 @@ export class ApiService {
 
   updateStatutLivraison(id: string, state: string) {
     return this.http.get(`${BASE_URL}/livraison/${id}/update/state/${state}`, { responseType: 'text' });
+  }
+
+  saveFarmer(farmer: Farmer){
+    return this.http.post(`${BASE_URL}/fermier/createaccount`, farmer, { responseType: 'text' });
   }
 }
