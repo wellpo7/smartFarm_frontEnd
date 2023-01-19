@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FarmerService } from 'src/app/services/farmer.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { FarmerService } from 'src/app/services/farmer.service';
 })
 export class FermierLoginPage implements OnInit {
 
-  constructor(private farmerServ: FarmerService) { }
+  constructor(private farmerServ: FarmerService, private router:Router) { }
 
   email!: string;
   password!: string;
@@ -19,8 +20,8 @@ export class FermierLoginPage implements OnInit {
 
   login() {
     let loginInfos = {
-      // "email": "philbatou@gmail.com",
-      // "password": "hisoka44",
+      // "email": "sylveretedongmo@gmail.com",
+      // "password": "sylver02",
       "email": this.email,
       "password": this.password
     }
@@ -28,7 +29,8 @@ export class FermierLoginPage implements OnInit {
     this.farmerServ.login(loginInfos).subscribe((datas) => {
       console.log("idFarmer " + datas.idFarmer)
       localStorage.removeItem("idFarmer")
-      localStorage.setItem("idFarmer", JSON.stringify(datas))
+      localStorage.setItem("idFarmer", datas.idFarmer)
+      this.router.navigate(['/dashboard/home']);
     })
 
   };

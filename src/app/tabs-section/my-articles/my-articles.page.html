@@ -25,10 +25,9 @@
     </ion-card>
 
     <div class="main">
-      <!-- <div *ngIf=" 1 == 0; else list">
-        <p>Vous n'avez pas encore de fruit enregistré (° - °) !</p>
-      </div> -->
-      <!-- <ng-template #list> -->
+      <span *ngIf="isLoaded; then loaded else loading"></span>
+
+      <ng-template #loading>
         <ion-card class="my" color="primary">
           <div class="img">
             <ion-thumbnail slot="start" class="img-skeleton">
@@ -129,28 +128,31 @@
             </ion-card-content>
           </div>
         </ion-card>
+      </ng-template>
 
-
-
-
-
-        <ion-card class="my" color="primary">
-          <div class="img">
-            <img src="../../../assets/icon/favicon.png" alt="Icon">
-          </div>
-          <div class="content">
-            <ion-card-header>
-              <ion-card-subtitle>Fruit</ion-card-subtitle>
-              <ion-card-title>Nom du fruit</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <p>Prix : XXX Fcfa</p>
-              <p>Quantité : XXX</p>
-            </ion-card-content>
-            <ion-button fill="clear" color="tertiary">Détail</ion-button>
-          </div>
-        </ion-card>
-      <!-- </ng-template> -->
+      <ng-template #loaded>
+        <div *ngIf=" articles.length == 0; else list">
+          <p>Vous n'avez pas encore d'article enregistré (° - °) !</p>
+        </div>
+        <ng-template #list>
+          <ion-card class="my" color="primary" *ngFor="let article of articles">
+            <div class="img">
+              <img src="../../../assets/icon/favicon.png" alt="Icon">
+            </div>
+            <div class="content">
+              <ion-card-header>
+                <ion-card-subtitle>Article</ion-card-subtitle>
+                <ion-card-title>{{article.nom}}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <p>Prix : {{article.prixU}} Fcfa</p>
+                <p>Quantité : {{article.quantite}}</p>
+              </ion-card-content>
+              <ion-button fill="clear" color="tertiary" [routerLink]="['/article-details', article.id]" routerLinkActive="router-link-active" >Détail</ion-button>
+            </div>
+          </ion-card>
+        </ng-template>
+      </ng-template>
     </div>
   </div>
 </ion-content>
