@@ -94,10 +94,16 @@ export interface Produit {
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.getAllCategories()
+  }
 
   loginFarmer(loginInfos: FarmerLogin): Observable<any> {
     return this.http.post(`${BASE_URL}/fermier/signin`, loginInfos)
+  }
+
+  createArticle(articleInfos: Article): Observable<any> {
+    return this.http.post(`${BASE_URL}/article/save`, articleInfos)
   }
 
   getFarmerData(id: string) {
@@ -118,5 +124,12 @@ export class ApiService {
 
   getCommandes(id: string) {
     return this.http.get(`${BASE_URL}/article/fermier/${id}/commandes`);
+  }
+
+  getAllCategories() {
+    this.http.get(`${BASE_URL}/category/all`).subscribe((val) => {
+      localStorage.removeItem("categories")
+      localStorage.setItem("categories", JSON.stringify(val))
+    })
   }
 }
