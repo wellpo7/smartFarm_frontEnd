@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ArticleAddPage } from './article-add.page';
+import { FermierFormPage } from './fermier-form.page';
 
-describe('ArticleAddPage', () => {
-  let component: ArticleAddPage;
-  let fixture: ComponentFixture<ArticleAddPage>;
+describe('FermierFormPage', () => {
+  let component: FermierFormPage;
+  let fixture: ComponentFixture<FermierFormPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArticleAddPage ],
+      declarations: [ FermierFormPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ArticleAddPage);
+    fixture = TestBed.createComponent(FermierFormPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

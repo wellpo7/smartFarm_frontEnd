@@ -40,7 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./views/commande/commande.module').then(m => m.CommandePageModule)
   },
   {
-    path: 'article-details',
+    path: 'article-details/:id',
     loadChildren: () => import('./views/article-details/article-details.module').then(m => m.ArticleDetailsPageModule)
   },
   {
@@ -51,7 +51,10 @@ const routes: Routes = [
     path: 'commande-details/:id/total/:total',
     loadChildren: () => import('./views/commande-details/commande-details.module').then( m => m.CommandeDetailsPageModule)
   },
-
+  {
+    path: 'fermier-form',
+    loadChildren: () => import('./modals/fermier-form/fermier-form.module').then( m => m.FermierFormPageModule)
+  },
 
 ];
 

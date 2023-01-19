@@ -14,7 +14,7 @@ export interface Localisation {
 }
 
 export interface Farmer {
-  id: number,
+  id: string,
   nom: string,
   email: string,
   motDePasse: string,
@@ -101,9 +101,11 @@ export class ApiService {
   loginFarmer(loginInfos: FarmerLogin): Observable<any> {
     return this.http.post(`${BASE_URL}/fermier/signin`, loginInfos)
   }
-
-  createArticle(articleInfos: Article): Observable<any> {
-    return this.http.post(`${BASE_URL}/article/save`, articleInfos)
+  saveArticle(articleInfos: Article): Observable<any> {
+    const idFarmer = localStorage.getItem("idFarmer")
+    //@ts-ignore
+    const id = JSON.parse(idFarmer)
+    return this.http.post(`${BASE_URL}/article/fermier/${id}/save`, articleInfos)
   }
 
   getFarmerData(id: string) {
@@ -143,5 +145,9 @@ export class ApiService {
 
   updateStatutLivraison(id: string, state: string) {
     return this.http.get(`${BASE_URL}/livraison/${id}/update/state/${state}`, { responseType: 'text' });
+  }
+
+  saveFarmer(farmer: Farmer){
+    return this.http.post(`${BASE_URL}/fermier/createaccount`, farmer, { responseType: 'text' });
   }
 }

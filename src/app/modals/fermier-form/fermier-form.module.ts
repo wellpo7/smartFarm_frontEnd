@@ -4,17 +4,18 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ArticleAddPageRoutingModule } from './article-add-routing.module';
+import { FermierFormPageRoutingModule } from './fermier-form-routing.module';
 
-import { ArticleAddPage } from './article-add.page';
+import { FermierFormPage } from './fermier-form.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ArticleAddPageRoutingModule
+    FermierFormPageRoutingModule
   ],
-  declarations: [ArticleAddPage]
+  declarations: [FermierFormPage],
+  exports: [FermierFormPage]
 })
-export class ArticleAddPageModule {}
+export class FermierFormPageModule {}
