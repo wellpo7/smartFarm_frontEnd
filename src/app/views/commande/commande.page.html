@@ -2,11 +2,91 @@
   <ion-toolbar>
     <ion-title>Les articles commandés</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button text=""></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
+  <div class="container">
+    <ion-searchbar placeholder="Rechercher" [debounce]="1000"></ion-searchbar>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Les articles commandés</ion-card-subtitle>
+        <ion-card-title>Smart Farm</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <div class="main">
+
+      <span *ngIf="isLoaded; then loaded else loading"></span>
+
+      <ng-template #loading>
+        <ion-accordion-group>
+          <ion-accordion value="first">
+            <ion-item slot="header">
+              <ion-label>
+                <p><ion-skeleton-text animated style="width: 60%" class="skeleton-color"></ion-skeleton-text></p>
+                <h1><ion-skeleton-text animated style="width: 90%" class="skeleton-color"></ion-skeleton-text></h1>
+              </ion-label>
+            </ion-item>
+          </ion-accordion>
+          <ion-accordion value="second">
+            <ion-item slot="header">
+              <ion-label>
+                <p><ion-skeleton-text animated style="width: 60%" class="skeleton-color"></ion-skeleton-text></p>
+                <h1><ion-skeleton-text animated style="width: 90%" class="skeleton-color"></ion-skeleton-text></h1>
+              </ion-label>
+            </ion-item>
+          </ion-accordion>
+          <ion-accordion value="third">
+            <ion-item slot="header">
+              <ion-label>
+                <p><ion-skeleton-text animated style="width: 60%" class="skeleton-color"></ion-skeleton-text></p>
+                <h1><ion-skeleton-text animated style="width: 90%" class="skeleton-color"></ion-skeleton-text></h1>
+              </ion-label>
+            </ion-item>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ng-template>
+
+      <ng-template #loaded>
+        <div *ngIf="commandes.size == 0; else list">
+          <p>Désolé, vous n'avez pas encore de commande pour vos articles (° /\ °) !</p>
+        </div>
+
+        <ng-template #list>
+          <ion-accordion-group>
+            <ion-accordion *ngFor="let item of commandes | keyvalue" value="first{{item.key}}">
+              <ion-item slot="header">
+                <ion-label>
+                  <p>Article : {{item.key.id}}</p>
+                  <h1>{{item.key.nom}}</h1>
+                </ion-label>
+              </ion-item>
+              <div class="ion-padding" slot="content">
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-subtitle>Article : {{item.key.id}}</ion-card-subtitle>
+                    <ion-card-title>Les commandes</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <ion-list>
+                      <ion-item lines="none" *ngFor="let info of item.value" (click)="onClick(item.key)">
+                        <ion-label>
+                          <p>Commande : {{info.idCommande}}</p>
+                          <p>Quantité : {{info.quantite}}</p>
+                        </ion-label>
+                      </ion-item>
+                    </ion-list>
+                  </ion-card-content>
+                </ion-card>
+              </div>
+            </ion-accordion>
+          </ion-accordion-group>
+        </ng-template>
+      </ng-template>
+    </div>
+  </div>
 </ion-content>

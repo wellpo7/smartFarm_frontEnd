@@ -40,16 +40,16 @@ const routes: Routes = [
     loadChildren: () => import('./views/commande/commande.module').then( m => m.CommandePageModule)
   },
   {
-    path: 'commande-details',
-    loadChildren: () => import('./views/commande-details/commande-details.module').then( m => m.CommandeDetailsPageModule)
-  },
-  {
     path: 'article-details',
     loadChildren: () => import('./views/article-details/article-details.module').then( m => m.ArticleDetailsPageModule)
   },
   {
     path: 'article-form',
     loadChildren: () => import('./modals/article-form/article-form.module').then( m => m.ArticleFormPageModule)
+  },
+  {
+    path: 'commande-details',
+    loadChildren: () => import('./views/commande-details/commande-details.module').then( m => m.CommandeDetailsPageModule)
   },
 
 

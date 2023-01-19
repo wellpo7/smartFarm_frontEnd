@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Article } from 'src/app/models/articles';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-my-articles',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyArticlesPage implements OnInit {
 
-  constructor() { }
+  articles:Article[] = []
+  isLoaded:boolean = false
 
-  ngOnInit() {
+  constructor(
+    private smartfarm:ApiService
+  ) { }
+
+  async ngOnInit() {
+    let idFarmer:string = localStorage.getItem("idFarmer")|| "";
+    await this.smartfarm.getArticlesFarmer(idFarmer).subscribe((val:any) => {
+      this.articles = val;
+      this.isLoaded = true;
+    })
   }
 
 }
