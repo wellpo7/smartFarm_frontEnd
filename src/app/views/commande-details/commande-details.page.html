@@ -1,9 +1,177 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>commande-details</ion-title>
+    <ion-title>Détails commande</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button id="popover-button" slot="icon-only">
+        <ion-icon name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+    <ng-template>
+      <ion-content>
+        <ion-list>
+          <ion-item [button]="true" [detail]="false" [routerLink]="['/dashboard']">Accueil</ion-item>
+          <ion-item [button]="true" [detail]="false" [routerLink]="['/dashboard/my-articles']">Mes articles</ion-item>
+          <ion-item [button]="true" [detail]="false" routerLink="/">Se déconnecter<ion-icon name="exit-outline"></ion-icon></ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
+
+  <span *ngIf="isLoaded; then loaded else loading"></span>
+
+  <ng-template #loading>
+    <div class="container">
+      <div class="header">
+        <div class="header-content">
+          <ion-icon slot="icon-only" name="reader-outline" color="light" class="img"></ion-icon>
+        </div>
+      </div>
+      <div class="content">
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              <p><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></p>
+              <h2><ion-skeleton-text animated style="width: 100%"></ion-skeleton-text></h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <p><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></p>
+              <h2>
+                <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+              </h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <p><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></p>
+              <h2>
+                <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+              </h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+              <h2>
+                <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+              </h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+              <h2>
+                <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+              </h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+              <h2>
+                <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+              </h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+              <h2>
+                <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+              </h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #loaded>
+    <div class="container">
+      <div class="header">
+        <div class="header-content">
+          <ion-icon slot="icon-only" name="reader-outline" color="light" class="img"></ion-icon>
+          <ion-text color="tertiary">
+            <h4>IDENTIFIANT : {{commande.id}}</h4>
+          </ion-text>
+        </div>
+      </div>
+      <div class="content">
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              <p>Date</p>
+              <h2>{{commande.date}}</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <p>Prix Total</p>
+              <h2>{{prixTotal}}</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <p>Livre ?</p>
+              <h2 *ngIf="commande.livre; else pasLiv">Oui</h2>
+              <ng-template #pasLiv>
+                <h2>Non</h2>
+              </ng-template>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <p>Statut de la commande</p>
+              <h2>{{commande.statutCommande}}
+                <ion-icon slot="end" name="create-outline" (click)="presentActionSheetPaiement()"></ion-icon>
+              </h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <p>Nom du client</p>
+              <h2>{{commande.clientDto.nom}}</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <p>Téléphone du client</p>
+              <h2>+237 {{commande.clientDto.telephone}}</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <p>Statut livraison</p>
+              <h2>{{commande.livraisonDto.statutLivraison}}
+                <ion-icon slot="end" name="create-outline" (click)="presentActionSheetLivraison()"></ion-icon>
+              </h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        <div class="map-container">
+          <div class="map-frame">
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 
 </ion-content>

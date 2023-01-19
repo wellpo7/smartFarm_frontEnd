@@ -20,8 +20,8 @@ export class FermierLoginPage implements OnInit {
 
   login() {
     let loginInfos = {
-      "email": "philbatou@gmail.com",
-      "password": "hisoka44",
+      "email": "sylveretedongmo@gmail.com",
+      "password": "sylver02",
       // "email": this.email,
       // "password": this.password
     }
