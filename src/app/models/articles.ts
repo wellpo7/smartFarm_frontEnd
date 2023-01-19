@@ -13,15 +13,3 @@ export class Article{
     fermierDto:Fermier = new Fermier()
     constructor(){}
 }
-
-export class ArticleDto{
-    id:string = ""
-    nom:string = ""
-    description:string = ""
-    prixU:number = 0
-    quantite:number = 0
-    categorieDto:Categorie = new Categorie()
-    imageDto:Image = new Image()
-    fermierDto:Fermier = new Fermier()
-    constructor(){}
-}
