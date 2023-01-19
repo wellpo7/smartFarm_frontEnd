@@ -20,10 +20,10 @@ export class FermierLoginPage implements OnInit {
 
   login() {
     let loginInfos = {
-      "email": "philbatou@gmail.com",
-      "password": "hisoka44",
-      // "email": this.email,
-      // "password": this.password
+      // "email": "sylveretedongmo@gmail.com",
+      // "password": "sylver02",
+      "email": this.email,
+      "password": this.password
     }
     console.log(loginInfos);
     this.api.loginFarmer(loginInfos).subscribe((datas) => {
