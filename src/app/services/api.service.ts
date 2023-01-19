@@ -102,8 +102,11 @@ export class ApiService {
     return this.http.post(`${BASE_URL}/fermier/signin`, loginInfos)
   }
 
-  createArticle(articleInfos: Article): Observable<any> {
-    return this.http.post(`${BASE_URL}/article/save`, articleInfos)
+  saveArticle(articleInfos: Article): Observable<any> {
+    const idFarmer = localStorage.getItem("idFarmer")
+    //@ts-ignore
+    const id = JSON.parse(idFarmer)
+    return this.http.post(`${BASE_URL}/article/fermier/${id}/save`, articleInfos)
   }
 
   getFarmerData(id: string) {
