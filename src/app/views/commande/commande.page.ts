@@ -13,8 +13,8 @@ export class CommandePage implements OnInit {
   isLoaded: boolean = false;
 
   constructor(
-    private smartfarm:ApiService,
-    private router:Router
+    private smartfarm: ApiService,
+    private router: Router
   ) { }
 
   async ngOnInit() {
@@ -25,7 +25,7 @@ export class CommandePage implements OnInit {
     })
   }
 
-  onClick(idCommande:string, prixTotal:number){
+  onClick(idCommande: string, prixTotal: number) {
     this.router.navigate(['/commande-details', idCommande, 'total', prixTotal]);
   }
 
