@@ -70,7 +70,7 @@ export interface Commande {
   date: Date,
   livre: boolean
   statutCommande: string,
-  customerDto: Customer,
+  clientDto: Customer,
   livraisonDto: Livraison,
 }
 
@@ -118,5 +118,17 @@ export class ApiService {
 
   getCommandes(id: string) {
     return this.http.get(`${BASE_URL}/article/fermier/${id}/commandes`);
+  }
+
+  getDetailCommande(id: string){
+    return this.http.get(`${BASE_URL}/commande/${id}/data`);
+  }
+
+  updateStatutCommande(id:string, state:string){
+    return this.http.get(`${BASE_URL}/commande/${id}/update/state/${state}`, { responseType: 'text' });
+  }
+
+  updateStatutLivraison(id:string, state:string){
+    return this.http.get(`${BASE_URL}/livraison/${id}/update/state/${state}`, { responseType: 'text' });
   }
 }

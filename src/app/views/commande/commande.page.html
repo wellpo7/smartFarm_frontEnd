@@ -4,10 +4,27 @@
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button id="popover-button" slot="icon-only">
+        <ion-icon name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+    <ng-template>
+      <ion-content>
+        <ion-list>
+          <ion-item [button]="true" [detail]="false" [routerLink]="['/dashboard']">Accueil</ion-item>
+          <ion-item [button]="true" [detail]="false" [routerLink]="['/dashboard/my-articles']">Mes articles</ion-item>
+          <ion-item [button]="true" [detail]="false" routerLink="/">Se déconnecter<ion-icon name="exit-outline"></ion-icon></ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
+
   <div class="container">
     <ion-searchbar placeholder="Rechercher" [debounce]="1000"></ion-searchbar>
 

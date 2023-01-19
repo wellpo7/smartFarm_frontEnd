@@ -48,13 +48,9 @@ const routes: Routes = [
     loadChildren: () => import('./modals/article-form/article-form.module').then(m => m.ArticleFormPageModule)
   },
   {
-    path: 'commande-details',
-    loadChildren: () => import('./views/commande-details/commande-details.module').then(m => m.CommandeDetailsPageModule)
+    path: 'commande-details/:id/total/:total',
+    loadChildren: () => import('./views/commande-details/commande-details.module').then( m => m.CommandeDetailsPageModule)
   },
-
-
-
-
 
 
 ];

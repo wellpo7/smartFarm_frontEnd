@@ -1,9 +1,8 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { EditProfilePage } from 'src/app/modals/edit-profile/edit-profile.page';
 import { ApiService, Farmer } from 'src/app/services/api.service';
 import * as L from 'leaflet';
-import { Observable, Subscriber } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -31,7 +30,7 @@ export class ProfilPage implements OnInit {
       this.isLoaded = true;
     });
     const timer = setInterval(() => {
-      if (this.isLoaded) {
+      if(this.isLoaded && this.map == null){
         this.loadMap();
         clearInterval(timer);
       }
