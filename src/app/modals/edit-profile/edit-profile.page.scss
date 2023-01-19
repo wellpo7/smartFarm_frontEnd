@@ -1,0 +1,32 @@
+@import '../../../theme/color.scss';
+
+ion-input.custom {
+    background-color: lighten($color: $color-primary, $amount: 70%);
+    --color: $text-color;
+    --placeholder-color: $color-gray;
+    --placeholder-opacity: .8;
+
+    --padding-bottom: 0.8rem;
+    --padding-end: 0.8rem;
+    --padding-start: 0.8rem;
+    --padding-top: 0.8rem;
+
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+ion-text{
+    text-align: center;
+}
+
+.map-container {
+    margin-top: 3rem;
+    height: 40vh;
+    width: 100%;
+    .map-frame {
+        height: 100%;
+        #map2 {
+            height: 100%;
+        }
+    }
+}

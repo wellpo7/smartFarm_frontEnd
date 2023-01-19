@@ -26,7 +26,7 @@ export class FermierLoginPage implements OnInit {
     }
     console.log(loginInfos);
     this.farmerServ.login(loginInfos).subscribe((datas) => {
-      console.log("idFarmer " + datas)
+      console.log("idFarmer " + datas.idFarmer)
       localStorage.removeItem("idFarmer")
       localStorage.setItem("idFarmer", JSON.stringify(datas))
     })
