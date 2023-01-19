@@ -50,7 +50,11 @@ const routes: Routes = [
   {
     path: 'article-form',
     loadChildren: () => import('./modals/article-form/article-form.module').then( m => m.ArticleFormPageModule)
+  },  {
+    path: 'article-add',
+    loadChildren: () => import('./views/article-add/article-add.module').then( m => m.ArticleAddPageModule)
   },
+
 
 
 

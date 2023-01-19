@@ -19,19 +19,18 @@ export class FermierLoginPage implements OnInit {
 
   login() {
     let loginInfos = {
-      // "email": "philbatou@gmail.com",
-      // "password": "hisoka44",
-      "email": this.email,
-      "password": this.password
+      "email": "philbatou@gmail.com",
+      "password": "hisoka44",
+      // "email": this.email,
+      // "password": this.password
     }
     console.log(loginInfos);
     this.farmerServ.login(loginInfos).subscribe((datas) => {
       console.log("idFarmer " + datas.idFarmer)
       localStorage.removeItem("idFarmer")
-      localStorage.setItem("idFarmer", JSON.stringify(datas))
+      localStorage.setItem("idFarmer", JSON.stringify(datas.idFarmer))
     })
 
   };
-
 
 }
