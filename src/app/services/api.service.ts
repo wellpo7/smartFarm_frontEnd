@@ -101,7 +101,6 @@ export class ApiService {
   loginFarmer(loginInfos: FarmerLogin): Observable<any> {
     return this.http.post(`${BASE_URL}/fermier/signin`, loginInfos)
   }
-
   saveArticle(articleInfos: Article): Observable<any> {
     const idFarmer = localStorage.getItem("idFarmer")
     //@ts-ignore

@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>Accueil</ion-title>
     <ion-buttons slot="start">
@@ -13,9 +13,72 @@
       <ion-title>Accueil</ion-title>
     </ion-toolbar>
   </ion-header>
+  
+  <h4>Categories</h4>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card [routerLink]="['/my-articles']" color="primary">
+          <ion-card-header>
+            <ion-card-title>Viandes-Poissons-Œufs</ion-card-title>
+            <p>Sources de protéines et de minéraux riches en vitamine A et D</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    
+      <ion-col size="12">
+        <ion-card [routerLink]="['/my-articles']" color="primary">
+          <ion-card-header>
+            <ion-card-title>Produits Laitiers</ion-card-title>
+            <p>Riches en protéines et glucides</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-card [routerLink]="['/my-articles']" color="primary">
+          <ion-card-header>
+            <ion-card-title>Matières Grasses</ion-card-title>
+            <p>Aident l'absorption de vitamines A,D,E et K par le corps</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-card [routerLink]="['/my-articles']" color="primary">
+          <ion-card-header>
+            <ion-card-title>Fruits & Légumes</ion-card-title>
+            <p>Riches en fibres, en vitamines, ainsi qu'en antioxydants</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <ion-card [routerLink]="['/my-articles']" color="primary">
+          
+          <ion-card-header>
+            <ion-card-title>Céréales & dérivés-légumineuses</ion-card-title>
+            <p>Riches en fribres alimentaires et en vitamines diverses</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <ion-card [routerLink]="['/my-articles']" color="primary">
+          <ion-card-header>
+            <ion-card-title>Sucres & Produits Sucrés</ion-card-title>
+            <p>Permet le bon fonctionnement des muscles et du cerveau</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <ion-card [routerLink]="['/my-articles']" color="primary">
+          <ion-card-header>
+            <ion-card-title>Boissons</ion-card-title>
+            <p>Régularisent la température corporelle</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

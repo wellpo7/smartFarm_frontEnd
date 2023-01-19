@@ -1,4 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpOptions } from '@capacitor/core';
+import { Http } from '@capacitor-community/http';
+import { from } from 'rxjs';
+
+
+
+// type categorie = {
+//   matricule: string,
+//   name:string,
+// }
 
 @Component({
   selector: 'app-home',
@@ -7,8 +17,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit{
 
-  constructor() {}
- 
+  // Data:any[]= []
+  // categories:categorie[] = [];
+
+  constructor() {} 
    ngOnInit() {
      
    }

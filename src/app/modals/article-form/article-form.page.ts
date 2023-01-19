@@ -19,6 +19,7 @@ export class ArticleFormPage implements OnInit {
   categorieDto!: Categorie;
   imageDto!: Image;
 
+
   public retrieve = localStorage.getItem("categories");
   //@ts-ignore
   public categories = JSON.parse(this.retrieve)
@@ -28,7 +29,6 @@ export class ArticleFormPage implements OnInit {
   nomCat!: string;
   descriptionCat!: string;
 
-  //image
 
   ngOnInit() {
   }
@@ -47,6 +47,11 @@ export class ArticleFormPage implements OnInit {
       "imageDto": {
 
       }
+  login() {
+    let article = {
+
+      // "email": this.email,
+      // "password": this.password
     }
     console.log(article);
     // this.api.loginFarmer(article).subscribe((datas) => {
@@ -54,6 +59,7 @@ export class ArticleFormPage implements OnInit {
     // })
 
   }
+
 
   async takePicture() {
     const image = await Camera.getPhoto({
