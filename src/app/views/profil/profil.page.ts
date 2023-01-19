@@ -1,8 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
-import { Fermier } from 'src/app/models/farmer';
 import { EditProfilePage } from 'src/app/modals/edit-profile/edit-profile.page';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService, Farmer } from 'src/app/services/api.service';
 import * as L from 'leaflet';
 import { Observable, Subscriber } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -14,24 +13,24 @@ import { environment } from 'src/environments/environment';
 })
 export class ProfilPage implements OnInit {
 
-  farmer:Fermier = new Fermier();
-  private map:any;
-  isLoaded:boolean = false;
+  farmer!: Farmer;
+  private map: any;
+  isLoaded: boolean = false;
 
   constructor(
-    private smartFarm:ApiService, 
-    private modalCtrl:ModalController,
-    private toastController:ToastController
-    ) { }
-  
+    private smartFarm: ApiService,
+    private modalCtrl: ModalController,
+    private toastController: ToastController
+  ) { }
+
 
   async ngOnInit() {
-    await this.smartFarm.getFarmerData("FE0001").subscribe((val:any) => {
+    await this.smartFarm.getFarmerData("FE0001").subscribe((val: any) => {
       this.farmer = val;
-      this.isLoaded = true;      
+      this.isLoaded = true;
     });
-    const timer = setInterval(()=>{
-      if(this.isLoaded){
+    const timer = setInterval(() => {
+      if (this.isLoaded) {
         this.loadMap();
         clearInterval(timer);
       }
@@ -62,24 +61,24 @@ export class ProfilPage implements OnInit {
   }
 
 
-  async openModal(){
+  async openModal() {
     const modal = await this.modalCtrl.create({
       component: EditProfilePage,
       componentProps: {
-        fermier : this.farmer
+        fermier: this.farmer
       }
     });
     await modal.present();
 
-    const {role, data} = await modal.onDidDismiss();
+    const { role, data } = await modal.onDidDismiss();
 
-    if(data){
+    if (data) {
       console.log(data);
-      this.smartFarm.updateFarmerData(data).subscribe((val:any) => this.presentToast(val));
+      this.smartFarm.updateFarmerData(data).subscribe((val: any) => this.presentToast(val));
     }
   }
 
-  async presentToast(msg:string) {
+  async presentToast(msg: string) {
     const toast = await this.toastController.create({
       message: msg,
       duration: 2000,

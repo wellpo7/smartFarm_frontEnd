@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FarmerService } from 'src/app/services/farmer.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-fermier-login',
@@ -8,7 +8,7 @@ import { FarmerService } from 'src/app/services/farmer.service';
 })
 export class FermierLoginPage implements OnInit {
 
-  constructor(private farmerServ: FarmerService) { }
+  constructor(private api: ApiService) { }
 
   email!: string;
   password!: string;
@@ -25,7 +25,7 @@ export class FermierLoginPage implements OnInit {
       // "password": this.password
     }
     console.log(loginInfos);
-    this.farmerServ.login(loginInfos).subscribe((datas) => {
+    this.api.loginFarmer(loginInfos).subscribe((datas) => {
       console.log("idFarmer " + datas.idFarmer)
       localStorage.removeItem("idFarmer")
       localStorage.setItem("idFarmer", JSON.stringify(datas.idFarmer))

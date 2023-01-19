@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import * as L from 'leaflet';
 import { Observable, Subscriber } from 'rxjs';
-import { Fermier } from 'src/app/models/farmer';
+import { Farmer } from 'src/app/services/api.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -12,21 +12,21 @@ import { environment } from 'src/environments/environment';
 })
 export class EditProfilePage implements OnInit {
 
-  popup:L.Popup = L.popup();
-  private map:any;
+  popup: L.Popup = L.popup();
+  private map: any;
 
-  @Input("fermier") fermier!:Fermier;
-  constructor(private modalCtrl:ModalController) { }
+  @Input("fermier") fermier!: Farmer;
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
     this.loadMap();
   }
 
-  cancel(){
+  cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  confirm(){
+  confirm() {
     return this.modalCtrl.dismiss(this.fermier, 'confirm');
   }
 
@@ -58,23 +58,23 @@ export class EditProfilePage implements OnInit {
     }).addTo(this.map);
 
     this.getCurrentPosition()
-    .subscribe((position: any) => {
-      this.map.flyTo([position.latitude, position.longitude], 13);
+      .subscribe((position: any) => {
+        this.map.flyTo([position.latitude, position.longitude], 13);
 
-      const icon = L.icon({
-        iconUrl: 'assets/img/marker-icon.png',
-        shadowUrl: 'assets/img/marker-shadow.png',
-        popupAnchor: [13, 0],
+        const icon = L.icon({
+          iconUrl: 'assets/img/marker-icon.png',
+          shadowUrl: 'assets/img/marker-shadow.png',
+          popupAnchor: [13, 0],
+        });
+
+        const marker = L.marker([position.latitude, position.longitude], { icon }).bindPopup('Angular Leaflet');
+        marker.addTo(this.map);
       });
-
-      const marker = L.marker([position.latitude, position.longitude], { icon }).bindPopup('Angular Leaflet');
-      marker.addTo(this.map);
-    });
   }
 
 
-  async clickMap(){
-    const test = (t:any) => {
+  async clickMap() {
+    const test = (t: any) => {
       console.log(t);
       this.map.flyTo([t.lat, t.lng], 13);
 
@@ -87,10 +87,10 @@ export class EditProfilePage implements OnInit {
       const marker = L.marker([t.lat, t.lng], { icon }).bindPopup('Vous êtes ici');
       marker.addTo(this.map);
     }
-    await this.map.on('click', function(e:any){
+    await this.map.on('click', function (e: any) {
       test(e.latlng);
     });
 
-    
+
   }
 }
