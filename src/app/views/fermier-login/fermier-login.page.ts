@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fermier-login',
@@ -8,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class FermierLoginPage implements OnInit {
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   email!: string;
   password!: string;
@@ -28,7 +29,8 @@ export class FermierLoginPage implements OnInit {
     this.api.loginFarmer(loginInfos).subscribe((datas) => {
       console.log("idFarmer " + datas.idFarmer)
       localStorage.removeItem("idFarmer")
-      localStorage.setItem("idFarmer", JSON.stringify(datas.idFarmer))
+      localStorage.setItem("idFarmer", datas.idFarmer)
+      this.router.navigate(['/dashboard/home']);
     })
 
   };

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService, DisplayCommande } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-commande',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommandePage implements OnInit {
 
-  constructor() { }
+  commandes: DisplayCommande[] = []
+  isLoaded: boolean = false;
 
-  ngOnInit() {
+  constructor(
+    private smartfarm: ApiService
+  ) { }
+
+  async ngOnInit() {
+    let idFarmer: string = localStorage.getItem("idFarmer") || "";
+    await this.smartfarm.getCommandes(idFarmer).subscribe((val: any) => {
+      this.commandes = val;
+      this.isLoaded = true;
+    })
+  }
+
+  onClick(idCommande: string, prixTotal: number) {
+
   }
 
 }

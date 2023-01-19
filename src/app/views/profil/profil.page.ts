@@ -25,7 +25,8 @@ export class ProfilPage implements OnInit {
 
 
   async ngOnInit() {
-    await this.smartFarm.getFarmerData("FE0001").subscribe((val: any) => {
+    let idFarmer: string = localStorage.getItem("idFarmer") || "";
+    await this.smartFarm.getFarmerData(idFarmer).subscribe((val: any) => {
       this.farmer = val;
       this.isLoaded = true;
     });
