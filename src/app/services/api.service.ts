@@ -31,7 +31,7 @@ export interface Categorie {
 export interface Image {
   id: string,
   name: string,
-  data: Blob,
+  data: string,
 }
 
 export interface Article {

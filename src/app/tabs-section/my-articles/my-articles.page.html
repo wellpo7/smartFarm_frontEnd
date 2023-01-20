@@ -135,9 +135,9 @@
           <p>Oups ! Il semblerait que vous n'avez pas encore enregistré d'article 😅</p>
         </div>
         <ng-template #list>
-          <ion-card class="my" color="primary" *ngFor="let article of articles">
+          <ion-card class="my" color="primary" *ngFor="let article of articlesView">
             <div class="img">
-              <img src="../../../assets/icon/favicon.png" alt="Icon">
+              <img [src]="article.imageUrl" alt="Icon">
             </div>
             <div class="content">
               <ion-card-header>
