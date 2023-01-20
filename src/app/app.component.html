@@ -25,9 +25,9 @@
             <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
             <ion-label>Mon profil</ion-label>
           </ion-item>
-          <ion-item disabled="true">
+          <ion-item [routerLink]="['/settings']">
             <ion-icon name="settings-outline" slot="start" color="primary"></ion-icon>
-            <ion-label>Les paramètres</ion-label>
+            <ion-label>Paramètres</ion-label>
           </ion-item>
           <ion-item [routerLink]="['/logout']">
             <ion-icon name="exit-outline" slot="start" color="primary"></ion-icon>
