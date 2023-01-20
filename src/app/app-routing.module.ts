@@ -51,6 +51,11 @@ const routes: Routes = [
     path: 'logout',
     loadChildren: () => import('./views/logout/logout.module').then( m => m.LogoutPageModule)
   },
+  {
+    path: 'settings',
+    loadChildren: () => import('./views/settings/settings.module').then( m => m.SettingsPageModule)
+  },
+
 
 
 ];
