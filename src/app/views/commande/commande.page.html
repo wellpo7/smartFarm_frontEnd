@@ -19,7 +19,7 @@
         <ion-list>
           <ion-item [button]="true" [detail]="false" [routerLink]="['/dashboard']">Accueil</ion-item>
           <ion-item [button]="true" [detail]="false" [routerLink]="['/dashboard/my-articles']">Mes articles</ion-item>
-          <ion-item [button]="true" [detail]="false" routerLink="/">Se déconnecter<ion-icon name="exit-outline"></ion-icon></ion-item>
+          <ion-item [button]="true" [detail]="false" routerLink="/logout">Se déconnecter<ion-icon name="exit-outline"></ion-icon></ion-item>
         </ion-list>
       </ion-content>
     </ng-template>
@@ -70,7 +70,7 @@
 
       <ng-template #loaded>
         <div *ngIf="commandes.length == 0; else list">
-          <p>Désolé, vous n'avez pas encore de commande pour vos articles (° /\ °) !</p>
+          <p>Pas encore de commande pour vous ! <br> Mais soyez patient, ça viendra 😁</p>
         </div>
 
         <ng-template #list>

@@ -95,12 +95,15 @@ export interface Produit {
 export class ApiService {
 
   constructor(private http: HttpClient) {
-    this.getAllCategories()
   }
 
   loginFarmer(loginInfos: FarmerLogin): Observable<any> {
     return this.http.post(`${BASE_URL}/fermier/signin`, loginInfos)
   }
+  saveFarmer(farmer: Farmer){
+    return this.http.post(`${BASE_URL}/fermier/createaccount`, farmer, { responseType: 'text' });
+  }
+
   saveArticle(articleInfos: Article): Observable<any> {
     const idFarmer = localStorage.getItem("idFarmer")
     //@ts-ignore
@@ -112,12 +115,12 @@ export class ApiService {
     return this.http.get(`${BASE_URL}/fermier/${id}/data`);
   }
 
-  updateFarmerData(farmer: Farmer) {
-    return this.http.post(`${BASE_URL}/fermier/${farmer.id}/update`, farmer, { responseType: 'text' });
-  }
-
   getArticlesFarmer(id: string) {
     return this.http.get(`${BASE_URL}/article/fermier/${id}/all`);
+  }
+
+  getArticlesFarmerByCategory(id:string, idCategory:string) {
+    return this.http.get(`${BASE_URL}/article/fermier/${id}/${idCategory}/searchByCategorie`);
   }
 
   getArticleData(id: string) {
@@ -129,14 +132,15 @@ export class ApiService {
   }
 
   getAllCategories() {
-    this.http.get(`${BASE_URL}/category/all`).subscribe((val) => {
-      localStorage.removeItem("categories")
-      localStorage.setItem("categories", JSON.stringify(val))
-    })
+    return this.http.get(`${BASE_URL}/category/all`)
   }
 
   getDetailCommande(id: string) {
     return this.http.get(`${BASE_URL}/commande/${id}/data`);
+  }
+
+  updateFarmerData(farmer: Farmer) {
+    return this.http.post(`${BASE_URL}/fermier/${farmer.id}/update`, farmer, { responseType: 'text' });
   }
 
   updateStatutCommande(id: string, state: string) {
@@ -147,7 +151,8 @@ export class ApiService {
     return this.http.get(`${BASE_URL}/livraison/${id}/update/state/${state}`, { responseType: 'text' });
   }
 
-  saveFarmer(farmer: Farmer){
-    return this.http.post(`${BASE_URL}/fermier/createaccount`, farmer, { responseType: 'text' });
+  deleteArticle(id: string){
+    return this.http.get(`${BASE_URL}/article/${id}/delete`, { responseType: 'text' });
   }
+  
 }

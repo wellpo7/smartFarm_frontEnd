@@ -12,14 +12,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'about',
-    loadChildren: () => import('./tabs-section/about/about.module').then(m => m.AboutPageModule)
-  },
-  {
-    path: 'my-articles',
-    loadChildren: () => import('./tabs-section/my-articles/my-articles.module').then(m => m.MyArticlesPageModule)
-  },
-  {
     path: 'profil',
     loadChildren: () => import('./views/profil/profil.module').then(m => m.ProfilPageModule)
   },
@@ -55,6 +47,11 @@ const routes: Routes = [
     path: 'fermier-form',
     loadChildren: () => import('./modals/fermier-form/fermier-form.module').then( m => m.FermierFormPageModule)
   },
+  {
+    path: 'logout',
+    loadChildren: () => import('./views/logout/logout.module').then( m => m.LogoutPageModule)
+  },
+
 
 ];
 

@@ -132,7 +132,7 @@
 
       <ng-template #loaded>
         <div *ngIf=" articles.length == 0; else list">
-          <p>Vous n'avez pas encore d'article enregistré (° - °) !</p>
+          <p>Oups ! Il semblerait que vous n'avez pas encore enregistré d'article 😅</p>
         </div>
         <ng-template #list>
           <ion-card class="my" color="primary" *ngFor="let article of articles">

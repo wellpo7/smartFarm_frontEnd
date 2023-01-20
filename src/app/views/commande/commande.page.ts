@@ -18,6 +18,9 @@ export class CommandePage implements OnInit {
   ) { }
 
   async ngOnInit() {
+  }
+
+  async ionViewWillEnter() {
     let idFarmer: string = localStorage.getItem("idFarmer") || "";
     await this.smartfarm.getCommandes(idFarmer).subscribe((val: any) => {
       this.commandes = val;
