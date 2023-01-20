@@ -22,6 +22,10 @@ const routes: Routes = [
         loadChildren: () => import('../about/about.module').then( m => m.AboutPageModule)
       },
       {
+        path: 'my-articles/:idCategorie',
+        loadChildren: () => import('../my-articles/my-articles.module').then( m => m.MyArticlesPageModule)
+      },
+      {
         path: 'my-articles',
         loadChildren: () => import('../my-articles/my-articles.module').then( m => m.MyArticlesPageModule)
       }

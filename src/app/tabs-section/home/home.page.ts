@@ -1,14 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpOptions } from '@capacitor/core';
-import { Http } from '@capacitor-community/http';
-import { from } from 'rxjs';
-
-
-
-// type categorie = {
-//   matricule: string,
-//   name:string,
-// }
+import { Categorie, ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -17,11 +8,22 @@ import { from } from 'rxjs';
 })
 export class HomePage implements OnInit{
 
-  // Data:any[]= []
-  // categories:categorie[] = [];
+  isLoaded:boolean = false;
+  categories:Categorie[] = [];
 
-  constructor() {} 
-   ngOnInit() {
-     
-   }
+  constructor(
+    private smartFarm:ApiService
+  ) {} 
+
+  ngOnInit() {
+  }
+
+  async ionViewWillEnter() {
+    await this.smartFarm.getAllCategories().subscribe((val:any) => {
+      localStorage.removeItem("categories")
+      localStorage.setItem("categories", JSON.stringify(val))
+      this.categories = val
+      this.isLoaded = true;
+    })
+  }
 }

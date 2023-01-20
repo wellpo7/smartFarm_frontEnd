@@ -47,6 +47,9 @@ export class ArticleFormPage implements OnInit {
       "imageDto": {
 
       }
+    }
+  }
+  
   login() {
     let article = {
 

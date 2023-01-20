@@ -19,11 +19,12 @@ export class FermierLoginPage implements OnInit {
     private toastController: ToastController) { }
 
   email!: string;
-  password!: string;
+  password: string = "";
   farmer!:Farmer;
 
 
   ngOnInit() {
+    this.password = "";
     this.farmer = {
       id: "",
       nom: "",

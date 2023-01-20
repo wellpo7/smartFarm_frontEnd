@@ -25,6 +25,9 @@ export class CommandeDetailsPage implements OnInit {
   ) { }
 
   async ngOnInit() {
+  }
+
+  async ionViewWillEnter() {
     let idCommande = this.route.snapshot.paramMap.get("id") || "";
     this.prixTotal = this.route.snapshot.paramMap.get("total") || "";
 
