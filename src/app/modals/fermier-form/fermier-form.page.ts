@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Geolocation } from '@capacitor/geolocation';
+import { Position } from '@capacitor/geolocation/dist/esm/definitions';
 import { ModalController } from '@ionic/angular';
 import * as L from 'leaflet';
-import { Observable, Subscriber } from 'rxjs';
 import { Farmer } from 'src/app/services/api.service';
 import { environment } from 'src/environments/environment';
 
@@ -30,20 +31,8 @@ export class FermierFormPage implements OnInit {
     return this.modalCtrl.dismiss(this.fermier, 'confirm');
   }
 
-  private getCurrentPosition(): any {
-    return new Observable((observer: Subscriber<any>) => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position: any) => {
-          observer.next({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          });
-          observer.complete();
-        });
-      } else {
-        observer.error();
-      }
-    });
+  async getCurrentPosition() {
+    return await Geolocation.getCurrentPosition();
   }
 
   private loadMap(): void {
@@ -58,18 +47,18 @@ export class FermierFormPage implements OnInit {
     }).addTo(this.map);
 
     this.getCurrentPosition()
-      .subscribe((position: any) => {
-        this.map.flyTo([position.latitude, position.longitude], 13);
+      .then((position: Position) => {
+        this.map.flyTo([position.coords.latitude, position.coords.longitude], 13);
 
-        this.fermier.localisationDto.latitude = position.latitude
-        this.fermier.localisationDto.longitude = position.longitude
+        this.fermier.localisationDto.latitude = "" + position.coords.latitude
+        this.fermier.localisationDto.longitude = "" + position.coords.longitude
         const icon = L.icon({
           iconUrl: 'assets/img/marker-icon.png',
           shadowUrl: 'assets/img/marker-shadow.png',
           popupAnchor: [13, 0],
         });
 
-        const marker = L.marker([position.latitude, position.longitude], { icon }).bindPopup('Angular Leaflet');
+        const marker = L.marker([position.coords.latitude, position.coords.longitude], { icon }).bindPopup('Angular Leaflet');
         marker.addTo(this.map);
       });
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
+import { ArticleView } from 'src/app/models/article';
 import { ApiService, Article } from 'src/app/services/api.service';
 
 @Component({
@@ -11,12 +13,13 @@ import { ApiService, Article } from 'src/app/services/api.service';
 export class ArticleDetailsPage implements OnInit {
 
   isLoaded:boolean = false
-  article!:Article
+  article!:ArticleView
 
   constructor(
     private smartFarm:ApiService,
     private router:Router,
     private route:ActivatedRoute,
+    private _sanitizer: DomSanitizer,
     private toastController: ToastController,
     private alertController: AlertController
   ) { }
@@ -27,11 +30,21 @@ export class ArticleDetailsPage implements OnInit {
   async ionViewWillEnter() {
     let idArticle = this.route.snapshot.paramMap.get("id") || "";
     await this.smartFarm.getArticleData(idArticle).subscribe((val:any) => {
-      this.article = val;
+      this.convertImageArticle(val)
       this.isLoaded = true;
     })
   }
 
+  convertImageArticle(article:Article){
+    this.article = new ArticleView(article);
+      if(article.imageDto.data != ""){
+        this.article.imageUrl = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
+                 + article.imageDto.data);
+      }else{
+        this.article.imageUrl = "../../../assets/img/favicon.png";
+      }
+  }
+  
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Supprimer',
